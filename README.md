@@ -1,5 +1,20 @@
 # leave_approval_system
-leave approval workflow
+
+Camunda BPMN workflow for leave approval.
+
+-The application receives leave details.
+
+-The service saves the leave request in the database.
+
+-It starts a Camunda workflow.
+
+-It passes leave details to the workflow.
+
+-It saves the Camunda process instance ID.
+
+-It returns the response to the client.
+
+check application locally using below details
 
 API 1: Apply for leave
 ------------------------------------------

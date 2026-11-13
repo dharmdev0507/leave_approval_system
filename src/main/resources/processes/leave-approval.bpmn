@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:camunda="http://camunda.org/schema/1.0/bpmn"
+    id="Definitions_1"
+    targetNamespace="http://example.com/leave">
+
+    <bpmn:process
+        id="leaveApprovalProcess"
+        name="Leave Approval Process"
+        isExecutable="true"
+        camunda:historyTimeToLive="180">
+
+        <bpmn:startEvent
+            id="StartEvent_1"
+            name="Leave Applied"/>
+
+        <bpmn:sequenceFlow
+            id="Flow_1"
+            sourceRef="StartEvent_1"
+            targetRef="ServiceTask_1"/>
+
+        <bpmn:serviceTask
+            id="ServiceTask_1"
+            name="Process Leave Approval"
+            camunda:delegateExpression="${leaveApprovalDelegate}"/>
+
+        <bpmn:sequenceFlow
+            id="Flow_2"
+            sourceRef="ServiceTask_1"
+            targetRef="EndEvent_1"/>
+
+        <bpmn:endEvent
+            id="EndEvent_1"
+            name="Process Completed"/>
+
+    </bpmn:process>
+</bpmn:definitions>
